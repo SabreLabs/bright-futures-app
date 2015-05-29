@@ -18,8 +18,9 @@ class ViewController: UIViewController {
         
         futureGet("http://chronic-flight-search.herokuapp.com/cannon_ball/iata_resolve/LGA").onSuccess { data in
             futureJSON(data).onSuccess { json in
-                let airportResponse: AirportResponse? = decode(json)
-                println("Future \(airportResponse?.airport.iataCode)")
+                futureAirport(json).onSuccess { airportResponse in
+                    NSLog("Airport: \(airportResponse.airport.iataCode)")
+                }
             }
         }
     }
@@ -45,6 +46,16 @@ class ViewController: UIViewController {
         if (json != nil)  { promise.success(json!)  }
         if (error != nil) { promise.failure(error!) }
 
+        return promise.future
+    }
+    func futureAirport(json: AnyObject) -> Future<AirportResponse> {
+        let promise = Promise<AirportResponse>()
+        let airportResponse: AirportResponse? = decode(json)
+        if (airportResponse != nil) {
+            promise.success(airportResponse!)
+        } else {
+            promise.failure(NSError(domain: "futureAirportDomain", code: 0, userInfo: nil))
+        }
         return promise.future
     }
 }
