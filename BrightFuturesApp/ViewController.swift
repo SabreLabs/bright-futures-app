@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        futureGet("http://localhost:3000/cannon_ball/iata_resolve/LGA").onSuccess { data in
+        futureGet("http://chronic-flight-search.herokuapp.com/cannon_ball/iata_resolve/LGA").onSuccess { data in
             futureJSON(data).onSuccess { json in
                 let airportResponse: AirportResponse? = decode(json)
                 println("Future \(airportResponse?.airport.iataCode)")
@@ -40,13 +40,10 @@ class ViewController: UIViewController {
     func futureJSON(data: NSData) -> Future<AnyObject> {
         let promise = Promise<AnyObject>()
 
-        var err: NSError?
-        var json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &err)
-        if let j: AnyObject = json {
-            promise.success(j)
-        } else {
-            promise.failure(err!)
-        }
+        var error: NSError?
+        var json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &error)
+        if (json != nil)  { promise.success(json!)  }
+        if (error != nil) { promise.failure(error!) }
 
         return promise.future
     }
