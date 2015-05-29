@@ -17,6 +17,7 @@
 		3569DA421B18BD1A000487DD /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3569DA3E1B18BD1A000487DD /* Box.framework */; };
 		3569DA431B18BD1A000487DD /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3569DA3F1B18BD1A000487DD /* BrightFutures.framework */; };
 		3569DA441B18BD1A000487DD /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3569DA401B18BD1A000487DD /* Runes.framework */; };
+		3569DA491B18C8C9000487DD /* airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3569DA481B18C8C9000487DD /* airport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		3569DA3E1B18BD1A000487DD /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/iOS/Box.framework; sourceTree = "<group>"; };
 		3569DA3F1B18BD1A000487DD /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/iOS/BrightFutures.framework; sourceTree = "<group>"; };
 		3569DA401B18BD1A000487DD /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
+		3569DA481B18C8C9000487DD /* airport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = airport.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 			children = (
 				35307F0E1B18B48700BAC5D7 /* AppDelegate.swift */,
 				35307F101B18B48700BAC5D7 /* ViewController.swift */,
+				3569DA481B18C8C9000487DD /* airport.swift */,
 				35307F121B18B48700BAC5D7 /* Main.storyboard */,
 				35307F151B18B48700BAC5D7 /* Images.xcassets */,
 				35307F171B18B48700BAC5D7 /* LaunchScreen.xib */,
@@ -259,6 +262,7 @@
 			files = (
 				35307F111B18B48700BAC5D7 /* ViewController.swift in Sources */,
 				35307F0F1B18B48700BAC5D7 /* AppDelegate.swift in Sources */,
+				3569DA491B18C8C9000487DD /* airport.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
