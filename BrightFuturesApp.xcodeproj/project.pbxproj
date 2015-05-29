@@ -13,6 +13,10 @@
 		35307F161B18B48700BAC5D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35307F151B18B48700BAC5D7 /* Images.xcassets */; };
 		35307F191B18B48700BAC5D7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35307F171B18B48700BAC5D7 /* LaunchScreen.xib */; };
 		35307F251B18B48700BAC5D7 /* BrightFuturesAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35307F241B18B48700BAC5D7 /* BrightFuturesAppTests.swift */; };
+		3569DA411B18BD1A000487DD /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3569DA3D1B18BD1A000487DD /* Argo.framework */; };
+		3569DA421B18BD1A000487DD /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3569DA3E1B18BD1A000487DD /* Box.framework */; };
+		3569DA431B18BD1A000487DD /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3569DA3F1B18BD1A000487DD /* BrightFutures.framework */; };
+		3569DA441B18BD1A000487DD /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3569DA401B18BD1A000487DD /* Runes.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,10 @@
 		35307F1E1B18B48700BAC5D7 /* BrightFuturesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrightFuturesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35307F231B18B48700BAC5D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35307F241B18B48700BAC5D7 /* BrightFuturesAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightFuturesAppTests.swift; sourceTree = "<group>"; };
+		3569DA3D1B18BD1A000487DD /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = Carthage/Build/iOS/Argo.framework; sourceTree = "<group>"; };
+		3569DA3E1B18BD1A000487DD /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/iOS/Box.framework; sourceTree = "<group>"; };
+		3569DA3F1B18BD1A000487DD /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/iOS/BrightFutures.framework; sourceTree = "<group>"; };
+		3569DA401B18BD1A000487DD /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +51,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3569DA441B18BD1A000487DD /* Runes.framework in Frameworks */,
+				3569DA431B18BD1A000487DD /* BrightFutures.framework in Frameworks */,
+				3569DA421B18BD1A000487DD /* Box.framework in Frameworks */,
+				3569DA411B18BD1A000487DD /* Argo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +73,7 @@
 			children = (
 				35307F0B1B18B48700BAC5D7 /* BrightFuturesApp */,
 				35307F211B18B48700BAC5D7 /* BrightFuturesAppTests */,
+				3569DA451B18BD22000487DD /* Frameworks */,
 				35307F0A1B18B48700BAC5D7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +125,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3569DA451B18BD22000487DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3569DA3D1B18BD1A000487DD /* Argo.framework */,
+				3569DA3E1B18BD1A000487DD /* Box.framework */,
+				3569DA3F1B18BD1A000487DD /* BrightFutures.framework */,
+				3569DA401B18BD1A000487DD /* Runes.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,6 +146,7 @@
 				35307F051B18B48700BAC5D7 /* Sources */,
 				35307F061B18B48700BAC5D7 /* Frameworks */,
 				35307F071B18B48700BAC5D7 /* Resources */,
+				3569DA471B18BE11000487DD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -206,6 +231,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3569DA471B18BE11000487DD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Argo.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Box.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/BrightFutures.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Runes.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		35307F051B18B48700BAC5D7 /* Sources */ = {
@@ -340,6 +385,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BrightFuturesApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -350,6 +399,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BrightFuturesApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -409,6 +462,7 @@
 				35307F2A1B18B48700BAC5D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		35307F2B1B18B48700BAC5D7 /* Build configuration list for PBXNativeTarget "BrightFuturesAppTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +471,7 @@
 				35307F2D1B18B48700BAC5D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
