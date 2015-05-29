@@ -17,12 +17,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let url = "http://chronic-flight-search.herokuapp.com/cannon_ball/iata_resolve/LGA"
-        futureGet(url).onSuccess { data in
-            futureJSON(data).onSuccess { json in
-                futureAirport(json).onSuccess { airportResponse in
-                    NSLog("Airport: \(airportResponse.airport.iataCode)")
-                }
-            }
+        futureGet(url).flatMap { data in
+            self.futureJSON(data)
+        }.flatMap { json in
+            self.futureAirport(json)
+        }.onSuccess { airportResponse in
+            NSLog("Airport: \(airportResponse.airport.iataCode)")
         }
     }
     
