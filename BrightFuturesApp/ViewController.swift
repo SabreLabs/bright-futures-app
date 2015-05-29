@@ -9,26 +9,35 @@
 import UIKit
 import Argo
 import Runes
+import BrightFutures
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-        let urlPath: String = "http://localhost:3000/cannon_ball/iata_resolve/LGA"
-        var url: NSURL = NSURL(string: urlPath)!
-        var request1: NSURLRequest = NSURLRequest(URL: url)
-        let queue:NSOperationQueue = NSOperationQueue()
-        NSURLConnection.sendAsynchronousRequest(request1, queue: queue, completionHandler:{ (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+        let dataFuture = futureGet("http://localhost:3000/cannon_ball/iata_resolve/LGA")
+        dataFuture.onSuccess { data in
             var err: NSError?
             var json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &err)
             if let j: AnyObject = json {
                 let airportResponse: AirportResponse? = decode(j)
-                println("Asynchronous \(airportResponse?.airport.iataCode)")
-            } else {
-                NSLog("Error handling \(json)")
+                println("Future \(airportResponse?.airport.iataCode)")
             }
+        }
+    }
+    
+    func futureGet(urlPath: String) -> Future<NSData> {
+        let promise = Promise<NSData>()
+
+        var url: NSURL = NSURL(string: urlPath)!
+        var request: NSURLRequest = NSURLRequest(URL: url)
+        let queue: NSOperationQueue = NSOperationQueue()
+        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler:{ (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            if (data != nil)  { promise.success(data!)  }
+            if (error != nil) { promise.failure(error!) }
         })
+        
+        return promise.future
     }
 }
