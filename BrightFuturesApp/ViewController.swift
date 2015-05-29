@@ -16,7 +16,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        futureGet("http://chronic-flight-search.herokuapp.com/cannon_ball/iata_resolve/LGA").onSuccess { data in
+        let url = "http://chronic-flight-search.herokuapp.com/cannon_ball/iata_resolve/LGA"
+        futureGet(url).onSuccess { data in
             futureJSON(data).onSuccess { json in
                 futureAirport(json).onSuccess { airportResponse in
                     NSLog("Airport: \(airportResponse.airport.iataCode)")
