@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let url = "http://chronic-flight-search.herokuapp.com/cannon_ball/iata_resolve/LGA"
-        futureGet2(url).flatMap { data in
+        futureGet(url).flatMap { data in
             self.futureJSON(data)
         }.flatMap { json in
             self.futureAirport(json)
@@ -29,21 +29,7 @@ class ViewController: UIViewController {
     
     func futureGet(urlPath: String) -> Future<NSData> {
         let promise = Promise<NSData>()
-
-        var url: NSURL = NSURL(string: urlPath)!
-        var request: NSURLRequest = NSURLRequest(URL: url)
-        let queue: NSOperationQueue = NSOperationQueue()
-        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler:{ (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-            if (data != nil)  { promise.success(data!)  }
-            if (error != nil) { promise.failure(error!) }
-        })
-        
-        return promise.future
-    }
-    func futureGet2(urlPath: String) -> Future<NSData> {
-        let promise = Promise<NSData>()
-        var request = HTTPTask()
-        request.GET(urlPath, parameters: nil) { (response: HTTPResponse) -> Void in
+        HTTPTask().GET(urlPath, parameters: nil) { (response: HTTPResponse) -> Void in
             if (response.responseObject != nil)  { promise.success(response.responseObject! as! NSData)  }
             if (response.error != nil)           { promise.failure(response.error!) }
         }
