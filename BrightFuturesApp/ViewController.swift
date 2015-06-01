@@ -10,6 +10,7 @@ import UIKit
 import Argo
 import Runes
 import BrightFutures
+import SwiftHTTP
 
 class ViewController: UIViewController {
 
@@ -17,7 +18,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let url = "http://chronic-flight-search.herokuapp.com/cannon_ball/iata_resolve/LGA"
-        futureGet(url).flatMap { data in
+        futureGet2(url).flatMap { data in
             self.futureJSON(data)
         }.flatMap { json in
             self.futureAirport(json)
@@ -37,6 +38,15 @@ class ViewController: UIViewController {
             if (error != nil) { promise.failure(error!) }
         })
         
+        return promise.future
+    }
+    func futureGet2(urlPath: String) -> Future<NSData> {
+        let promise = Promise<NSData>()
+        var request = HTTPTask()
+        request.GET(urlPath, parameters: nil) { (response: HTTPResponse) -> Void in
+            if (response.responseObject != nil)  { promise.success(response.responseObject! as! NSData)  }
+            if (response.error != nil)           { promise.failure(response.error!) }
+        }
         return promise.future
     }
     func futureJSON(data: NSData) -> Future<AnyObject> {

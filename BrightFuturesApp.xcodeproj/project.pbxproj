@@ -18,6 +18,7 @@
 		3569DA431B18BD1A000487DD /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3569DA3F1B18BD1A000487DD /* BrightFutures.framework */; };
 		3569DA441B18BD1A000487DD /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3569DA401B18BD1A000487DD /* Runes.framework */; };
 		3569DA491B18C8C9000487DD /* airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3569DA481B18C8C9000487DD /* airport.swift */; };
+		356ED94F1B1CD6B200E99453 /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 356ED94E1B1CD6B200E99453 /* SwiftHTTP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		3569DA3F1B18BD1A000487DD /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/iOS/BrightFutures.framework; sourceTree = "<group>"; };
 		3569DA401B18BD1A000487DD /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
 		3569DA481B18C8C9000487DD /* airport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = airport.swift; sourceTree = "<group>"; };
+		356ED94E1B1CD6B200E99453 /* SwiftHTTP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHTTP.framework; path = Carthage/Build/iOS/SwiftHTTP.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				3569DA431B18BD1A000487DD /* BrightFutures.framework in Frameworks */,
 				3569DA421B18BD1A000487DD /* Box.framework in Frameworks */,
 				3569DA411B18BD1A000487DD /* Argo.framework in Frameworks */,
+				356ED94F1B1CD6B200E99453 /* SwiftHTTP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +138,7 @@
 				3569DA3E1B18BD1A000487DD /* Box.framework */,
 				3569DA3F1B18BD1A000487DD /* BrightFutures.framework */,
 				3569DA401B18BD1A000487DD /* Runes.framework */,
+				356ED94E1B1CD6B200E99453 /* SwiftHTTP.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -246,6 +250,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Box.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/BrightFutures.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Runes.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftHTTP.framework",
 			);
 			outputPaths = (
 			);
