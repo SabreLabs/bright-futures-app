@@ -1,5 +1,6 @@
 github "robrix/Box" "1.2.2"
 github "Thomvis/BrightFutures" "v1.0.1"
+github "Haneke/HanekeSwift" "v0.9.1"
 github "thoughtbot/Runes" "v2.0.0"
 github "daltoniam/SwiftHTTP" "0.9.5"
 github "thoughtbot/Argo" "v1.0.3"

@@ -11,14 +11,15 @@ import Argo
 import Runes
 import BrightFutures
 import SwiftHTTP
+import Haneke
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = "http://chronic-flight-search.herokuapp.com/cannon_ball/iata_resolve/LGA"
-        futureGet(url).flatMap { data in
+        let url = "https://chronic-flight-search.herokuapp.com/cannon_ball/iata_resolve/DFW"
+        futureCacheGet(url).flatMap { data in
             self.futureJSON(data)
         }.flatMap { json in
             self.futureAirport(json)
@@ -27,6 +28,16 @@ class ViewController: UIViewController {
         }
     }
     
+    func futureCacheGet(urlPath: String) -> Future<NSData> {
+        let promise = Promise<NSData>()
+        let cache = Cache<NSData>(name: "chronic")
+        cache.fetch(URL: NSURL(string: urlPath)!).onSuccess { JSON in
+            promise.success(JSON)
+        }.onFailure { error in
+            promise.failure(error!)
+        }
+        return promise.future
+    }
     func futureGet(urlPath: String) -> Future<NSData> {
         let promise = Promise<NSData>()
         HTTPTask().GET(urlPath, parameters: nil) { (response: HTTPResponse) -> Void in
